@@ -1,15 +1,15 @@
 ﻿namespace _01_singleton;
 
-internal class Singleton
+internal class Notary
 {
-    private Singleton()
+    private Notary()
     {
     }
 
-    private static Singleton? _instance;
+    private static Notary? _instance;
     private static readonly object Lock = new();
 
-    public static Singleton GetInstance(
+    public static Notary GetInstance(
         int uid,
         string name,
         string phone,
@@ -20,7 +20,7 @@ internal class Singleton
         if (_instance != null) return _instance;
         lock (Lock)
         {
-            _instance ??= new Singleton
+            _instance ??= new Notary
             {
                 Uid = uid,
                 Name = name,
@@ -34,10 +34,10 @@ internal class Singleton
     }
 
     public int Uid { get; init; }
-    public string Name { get; init; }
-    public string Phone { get; private init; }
-    public string Email { get; private init; }
-    public string Address { get; private init; }
+    public string? Name { get; init; }
+    public string? Phone { get; private init; }
+    public string? Email { get; private init; }
+    public string? Address { get; private init; }
 
     public override string ToString()
     {
@@ -48,7 +48,7 @@ internal class Singleton
 
 internal static class Program
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
         Console.WriteLine(
             "{0}\n{1}\n\n{2}\n",
@@ -90,7 +90,7 @@ internal static class Program
         string address
     )
     {
-        var singleton = Singleton.GetInstance(
+        var singleton = Notary.GetInstance(
             uid, name, phone, email, address
         );
         Console.WriteLine(singleton.ToString());
