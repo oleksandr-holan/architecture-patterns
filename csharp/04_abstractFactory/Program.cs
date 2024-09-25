@@ -1,12 +1,12 @@
 ﻿namespace _04_abstractFactory;
 
-public interface ICloth
+public interface IClothes
 {
     IModern CreateModern();
     IClassic CreateClassic();
 }
 
-internal class Pants : ICloth
+internal class Pants : IClothes
 {
     public IModern CreateModern()
     {
@@ -19,7 +19,7 @@ internal class Pants : ICloth
     }
 }
 
-internal class Shirt : ICloth
+internal class Shirt : IClothes
 {
     public IModern CreateModern()
     {
@@ -69,7 +69,7 @@ internal class ClassicPants : IClassic
     public string MatchWith(IModern modernPiece)
     {
         var modernStyle = modernPiece.GetStyle();
-        return $"Classic pants paired with {modernStyle}";
+        return $"{GetStyle()} paired with {modernStyle}";
     }
 }
 
@@ -83,7 +83,7 @@ internal class ClassicShirt : IClassic
     public string MatchWith(IModern modernPiece)
     {
         var modernStyle = modernPiece.GetStyle();
-        return $"Classic shirt paired with {modernStyle}";
+        return $"{GetStyle()} paired with {modernStyle}";
     }
 }
 
@@ -99,7 +99,7 @@ internal static class ClothingStore
         ShowcaseClothing(new Shirt());
     }
 
-    private static void ShowcaseClothing(ICloth factory)
+    private static void ShowcaseClothing(IClothes factory)
     {
         var modernPiece = factory.CreateModern();
         var classicPiece = factory.CreateClassic();
