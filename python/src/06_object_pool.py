@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 import importlib
-from abc import ABC, abstractmethod
 
 singleton = importlib.import_module("01_singleton", package=None)
 
