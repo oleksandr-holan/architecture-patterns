@@ -14,9 +14,6 @@ public class Agent(
 
 public sealed class PipelineAgentsPool
 {
-    private static readonly Lazy<PipelineAgentsPool> Lazy =
-        new(() => new PipelineAgentsPool());
-
     private static PipelineAgentsPool? _instance;
     private static readonly object Lock = new();
 
